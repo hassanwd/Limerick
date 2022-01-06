@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Carousel-Home</title>
+
+
+      <style>
+        body{
+        overflow-x: hidden;
+        }
+        *{
+          padding: 0; 
+          margin: 0;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #navbar{
+          width: 100vw;
+          height: 20vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 40vw;
+          height: 4vh;
+          margin-left: 20vw;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.5s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav ul li a:hover{
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide1 a{
+          color: black;
+          text-decoration: none;
+        }
+
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #nav-hide2{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: -5vh;
+          margin-left: 5vw;
+          display: none;
+          /* opacity: 0; */
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide2:hover{
+          display: block;
+        }
+        #nav-hide2 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        #nav-hide1 #hover2:hover + #nav-hide2{
+          display: block;
+          /* opacity: 1; */
+          animation: nav-hide2-slide 0.3s;
+        }
+        @keyframes nav-hide2-slide {
+          
+            0%{
+              margin-top: 0vh;
+            }
+            100%{
+              margin-top: -5vh;
+            }
+
+        }
+        
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 1vh;
+          border-radius: 50%; 
+          padding: 8px 15px 18px 10px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.1vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+        #nav-hide-icon{
+          width: 4vw;
+          height: 6vh;
+          opacity: 0;
+          margin-left: 80vw;
+          position: absolute;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide-icon i{
+          font-size: 3vw;
+          color: white;
+        }
+
+        #nav-second{
+          width: 10vw;
+          height: 30vh;
+          display: flex;
+          flex-wrap: wrap;
+          text-align: center;
+          justify-content: space-evenly;
+          flex-direction: column;
+          position: absolute;
+          background-color: brown;
+        }
+
+        @media screen and (max-width:1024px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 15vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 1vh;
+          border-radius: 50%; 
+          padding: 8px 15px 18px 10px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.1vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+
+
+        }
+        @media screen and (max-width:768px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 15vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          margin-left: 11px;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          margin-left: 0px;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 0.5vh;
+          border-radius: 50%; 
+          padding: 3px 15px 18px 8px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.5vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+
+
+        }
+        @media screen and (max-width:425px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 10vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 25vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          opacity: 0;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          opacity: 0;
+          margin-left: -28vw;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 0.5vh;
+          border-radius: 50%; 
+          padding: 3px 15px 18px 8px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.5vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+        #nav-hide-icon{
+          width: 6vw;
+          height: 4vh;
+          opacity: 1;
+          padding: 5px;
+          margin-left: 80vw;
+          position: absolute;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide-icon i{
+          font-size: 6vw;
+          color: white;
+        }
+
+
+        }
+
+
+
+
+
+
+        /* -------------------------------------Slider-------------------------------------- */
+
+
+
+
+        #slider-main-image{
+            width: 100vw;
+            height: auto;
+            padding: 1px;
+            margin-top: 5vh;
+            /* background-color: navy; */
+        }
+        #slider-image{
+            width: 100%;
+            height: auto;
+            padding: 1px;
+            margin-top: 2vh;
+            overflow: hidden;
+            /* background-color: olive; */
+        }
+        #move-image{
+            width: 100vw;
+            height: 600px;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25% 25%;
+            grid-template-rows: 80%;
+            animation: slider-image 10s linear infinite;
+            /* background-color: aquamarine;*/
+        }
+        @keyframes slider-image {
+            0%{
+                margin-left: 0;
+            }
+            50%{
+              margin-left: 0;
+            }
+            55%{
+              margin-left: -25vw;
+            }
+            95%{
+                margin-left: -25vw;  
+            }
+            100%{
+              margin-left: 0;
+            }
+
+        }
+        #move-slide1{
+          width: 100%;
+        }
+
+        #gallery-1-hide{
+          width: 90%;
+          height: 110%;
+          /* z-index: 534; */
+          opacity: 0;
+          padding: 1px;
+          margin: -98vh 1.5vw;
+          position: relative;
+          animation: small-big 1s;
+          background-color: rgba(255, 255, 255, 0.87);
+        }
+        #gallery-1-hide-heading{
+          font-size: 1.5vw;
+          margin-top: 40vh;
+          text-align: center;
+          color: rgb(82, 80, 80);
+        }
+        #gallery-1-hide-para{
+          font-size: 1.2vw;
+          margin-top: 1vh;
+          text-align: center;
+          color: rgb(82, 80, 80);
+        }
+        #gallery-1-hide-circle{
+          width: 3vw;
+          height: 6vh;
+          z-index: -1;
+          margin: -20% 20%;
+          position: absolute;
+          border-radius: 50%;
+          background-color: rgb(255,233,145);
+        }
+        #move-slide1-image:hover #gallery-1-hide{
+          opacity: 1;
+          transform: rotateY(360deg);
+          transition: 1s;
+        }
+        #move-slide2-image:hover #gallery-1-hide{
+          opacity: 1;
+          transform: rotateY(360deg);
+          transition: 1s;
+        }
+        #move-slide3-image:hover #gallery-1-hide{
+          opacity: 1;
+          transform: rotateY(360deg);
+          transition: 1s;
+        }
+        #move-slide4-image:hover #gallery-1-hide{
+          opacity: 1;
+          transform: rotateY(360deg);
+          transition: 1s;
+        }
+        #move-slide5-image:hover #gallery-1-hide{
+          opacity: 1;
+          transform: rotateY(360deg);
+          transition: 1s;
+        }
+        @keyframes small-big {
+
+            0%{
+              width: 40%;
+              margin: -98vh 1.5vw;
+            }
+            100%{
+              width: 90%;
+              margin: -98vh 1.5vw;
+            }
+
+          }
+
+
+          @media screen and (max-width:1024px) {
+            
+
+            #gallery-1-hide{
+              height: 95%;
+              margin: -75vh 1.5vw;
+            }
+
+
+      }
+
+
+
+          @media screen and (max-width:768px) {
+            
+
+                #move-image{
+                  height: 420px;
+                }
+
+
+          }
+
+
+          @media screen and (max-width:425px) {
+            
+
+            #move-image{
+              height: 320px;
+            }
+            #gallery-1-hide {
+              height: 70%;
+              margin: -30vh 1.5vw;
+            }
+            #gallery-1-hide-heading {
+              font-size: 2.5vw;
+              margin-top: 12vh;
+              text-align: center;
+              color: rgb(82, 80, 80);
+            }
+            #gallery-1-hide-para{
+              font-size: 8px;
+            } 
+
+
+      }
+
+
+
+
+
+        /* ---------------------------------------Footer-------------------------------- */
+
+
+
+
+        #footer{
+          width: 100vw;
+          height: 30vh;
+          /* justify-content: space-evenly; */
+          background-color: white;
+        }
+        #footer:last-child #footer-a{
+          height: 5vh;
+        }
+        #footer-main{
+          width: 30vw;
+          height: 15vh;
+          margin: 5vh auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* background-color: darkgreen; */
+        }
+        #footer-a{
+          text-align: center;
+          width: 30vw;
+          height: 5vh;
+          display: flex;
+          justify-content: center;
+          /* background-color: violet; */
+        }
+        #footer-a img{
+          width: 15vw;
+        }
+
+
+
+
+
+      </style>
+
+
+
+</head>
+<body>
+
+
+  <div id="navbar">
+    <div id="navbar-image"><img src="./Limerick-images/logo.png" alt=""></div>
+    <div id="nav">
+      <ul>
+        <div id="first-nav-ellement">
+            <li><a href="./Limerick.html">HOME</a></li>
+            <div id="nav-hide1">
+              <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+                <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+                <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+                <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+                <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+                <p id="hover2"> &nbsp;Header Style</p>
+                <div id="nav-hide2">
+                  <a href="./Limerick.html"><p> &nbsp;header style 01</p></a><hr>
+                  <a href="./designer home.html"><p> &nbsp;header style 02</p></a><hr>
+                  <a href="./parallax-home.html"><p> &nbsp;header style 03</p></a><hr>
+                  <a href="./portfolio-home.html"><p> &nbsp;header style 04</p></a><hr>
+                  <a href="./carousel-home.html"><p> &nbsp;header style 05</p></a><hr>
+                  <a href="./Limerick.html"><p> &nbsp;header style 06</p></a>
+              </div>
+              </div>
+        </div>
+        <div>
+          <li><a href="./about-us.html">ABOUT US</a></li>
+          <div id="nav-hide1">
+              <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+              <a href="./Error-page.html"><p> &nbsp;Error Page</p></a>
+          </div>
+      </div>
+      <div>
+        <li><a href="./porfolio-left-slidebar.html">PORTFOLIO</a></li>
+        <div id="nav-hide1">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a>
+        </div>
+    </div>
+    <div>
+      <li><a href="">ELLEMENTS</a></li>
+      <div id="nav-hide1">
+          <p id="hover2"> &nbsp;Home</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Header Style</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Header Style 01</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Header Style 02</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Header Style 03</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Header Style 04</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Header Style 05</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Portfolio</p>
+          <div id="nav-hide2">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;About</p>
+          <div id="nav-hide2">
+            <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+            <a href="./about-us.html"><p> &nbsp;Team</p></a>
+        </div>
+      </div>
+  </div>
+  <div>
+    <li><a href="">BLOG</a></li>
+    <div id="nav-hide1">
+        <a href="./blog-with-slidebar.html"><p> &nbsp;Blog with Slidebar</p></a><hr>
+        <a href="./Blog-grid-view.html"><p> &nbsp;Blog Grid View</p></a><hr>
+        <a href="./Blog-list.html"><p> &nbsp;Blog List View</p></a><hr>
+        <a href="./Blog-Mansonry.html"><p> &nbsp;Blog Mansonry</p></a><hr>
+        <a href="./Blog-single.html"><p> &nbsp;Blog Single</p></a>
+    </div>
+</div>
+  <li><a href="./Contect.html">CONTECT US</a></li>
+   </ul>
+    </div>
+    
+    <div id="navbar-icons">
+      <div id="navbar-icons-a"><i class="fab fa-facebook-f"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-twitter"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-google-plus-g"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-pinterest-p"></i></div>
+      <div id="navbar-icons-a"><i class="fas fa-globe"></i></div>
+    </div>
+
+      <div id="nav-hide-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+
+</div>
+
+
+
+<div id="slider-main-image">
+  <div id="slider-image">
+      <div id="move-image">
+          <div id="move-slide1-image">
+            <img id="move-slide1" src="./Carousel-Home-image/51.jpg" alt="">
+            <div id="gallery-1-hide">
+              <div id="gallery-1-hide-heading">CREATIVE PORTFOLIO</div>
+              <div id="gallery-1-hide-para">Designer Home</div>
+              <div id="gallery-1-hide-circle"></div>
+          </div>
+          </div>
+          <div id="move-slide2-image">
+            <img id="move-slide1" src="./Carousel-Home-image/52.jpg" alt="">
+            <div id="gallery-1-hide">
+              <div id="gallery-1-hide-heading">CREATIVE PORTFOLIO</div>
+              <div id="gallery-1-hide-para">Designer Home</div>
+              <div id="gallery-1-hide-circle"></div>
+          </div>
+          </div>
+          <div id="move-slide3-image">
+            <img id="move-slide1" src="./Carousel-Home-image/53.jpg" alt="">
+            <div id="gallery-1-hide">
+              <div id="gallery-1-hide-heading">CREATIVE PORTFOLIO</div>
+              <div id="gallery-1-hide-para">Designer Home</div>
+              <div id="gallery-1-hide-circle"></div>
+          </div>
+          </div>
+          <div id="move-slide4-image">
+            <img id="move-slide1" src="./Carousel-Home-image/50.jpg" alt="">
+            <div id="gallery-1-hide">
+              <div id="gallery-1-hide-heading">CREATIVE PORTFOLIO</div>
+              <div id="gallery-1-hide-para">Designer Home</div>
+              <div id="gallery-1-hide-circle"></div>
+          </div>
+          </div>
+          <div id="move-slide5-image">
+            <img id="move-slide1" src="./Carousel-Home-image/51.jpg" alt="">
+            <div id="gallery-1-hide">
+              <div id="gallery-1-hide-heading">CREATIVE PORTFOLIO</div>
+              <div id="gallery-1-hide-para">Designer Home</div>
+              <div id="gallery-1-hide-circle"></div>
+          </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div id="footer">
+  <div id="footer-main">
+  <div id="footer-a"><img src="./Limerick-images/logo.png" alt=""></div>
+  <div id="footer-a">© Copyright 2020 Limerick. All Rights Reserved</div>
+  <div id="footer-a">
+    <div id="navbar-icons">
+      <div id="navbar-icons-a"><i class="fab fa-facebook-f"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-twitter"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-google-plus-g"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-pinterest-p"></i></div>
+      <div id="navbar-icons-a"><i class="fas fa-globe"></i></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+  
+</body>
+</html>

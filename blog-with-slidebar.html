@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Blog With Slidebar</title>
+
+
+  <style>
+              body{
+        overflow-x: hidden;
+        }
+        *{
+          padding: 0; 
+          margin: 0;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #navbar{
+          width: 100vw;
+          height: 20vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 33434;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          margin-left: 20vw;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 40vw;
+          height: 4vh;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav ul li a:hover{
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide1 a{
+          color: black;
+          text-decoration: none;
+        }
+
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #nav-hide2{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: -5vh;
+          margin-left: 5vw;
+          display: none;
+          /* opacity: 0; */
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide2:hover{
+          display: block;
+        }
+        #nav-hide2 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        #nav-hide1 #hover2:hover + #nav-hide2{
+          display: block;
+          /* opacity: 1; */
+          animation: nav-hide2-slide 0.3s;
+        }
+        @keyframes nav-hide2-slide {
+          
+            0%{
+              margin-top: 0vh;
+            }
+            100%{
+              margin-top: -5vh;
+            }
+
+        }
+        
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 1vh;
+          border-radius: 50%; 
+          padding: 8px 15px 18px 10px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.1vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+        #nav-hide-icon{
+          width: 4vw;
+          height: 6vh;
+          opacity: 0;
+          margin-left: 80vw;
+          position: absolute;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide-icon i{
+          font-size: 3vw;
+          color: white;
+        }
+
+        #nav-second{
+          width: 10vw;
+          height: 30vh;
+          display: flex;
+          flex-wrap: wrap;
+          text-align: center;
+          justify-content: space-evenly;
+          flex-direction: column;
+          position: absolute;
+          background-color: brown;
+        }
+         @media screen and (max-width:1024px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 15vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 1vh;
+          border-radius: 50%; 
+          padding: 8px 15px 18px 10px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.1vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+
+
+        }
+        @media screen and (max-width:768px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 15vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 0.5vh;
+          border-radius: 50%; 
+          padding: 3px 15px 18px 8px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.5vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+
+
+        }
+        @media screen and (max-width:426px) {
+          
+
+          #navbar{
+          width: 100vw;
+          height: 10vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 25vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          opacity: 0;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.8s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav ul li a:hover{
+          color: white;
+          background-color: rgb(127,77,255);
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        /* #nav ul li div{
+          background-color: violet;
+        } */
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          opacity: 0;
+          margin-left: -28vw;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 0.5vh;
+          border-radius: 50%; 
+          padding: 3px 15px 18px 8px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.5vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+        #nav-hide-icon{
+          width: 6vw;
+          height: 4vh;
+          opacity: 1;
+          padding: 5px;
+          margin-left: 80vw;
+          position: absolute;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide-icon i{
+          font-size: 6vw;
+          color: white;
+        }
+
+
+        }
+
+
+
+
+         /* --------------------------------Home content------------------------ */
+
+
+
+
+         #home-content{
+          width: 100vw;
+          height: 40vh;
+          padding: 1px;
+          position: relative;
+          z-index: 1;
+          background-color: rgb(240, 239, 239);
+        }
+        #home-content-heading{
+          width: 30vw;
+          font-size: 4vw;
+          font-weight: bold;
+          height: max-content;
+          z-index: 1;
+          position: relative;
+          margin: 15vh auto;
+        }
+        #home-content-circle{
+          width: 10vw;
+          height: 20vh;
+          margin-left: 32vw;
+          margin-top: -30vh;
+          border-radius: 50%;
+          position: absolute;
+          background-color: rgb(255,233,145);
+        }
+
+        
+        @media screen and (max-width:1024px) {
+          
+          #home-content-circle{
+            width: 100px;
+            height: 100px;
+            margin-top: -25vh;
+            margin-left: 30vw;
+          }
+
+        }
+        @media screen and (max-width:426px) {
+          
+          #home-content-circle{
+            width: 100px;
+            height: 100px;
+            margin-top: -25vh;
+            margin-left: 15vw;
+          }
+          #home-content-heading{
+            font-size: 20px;
+            width: 200px;
+          }
+
+        }
+
+
+
+
+        /* --------------------------------Blog-------------------------- */
+
+
+
+        #blog-main{
+          width: 100vw;
+          height: 410vh;
+          padding: 1px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          /* background-color: burlywood; */
+        }
+        #blog{
+          width: 780px;
+          height: 400vh;
+          /* margin-left: 12vw; */
+          margin-top: 12vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: chocolate; */
+        }
+        #blog-a{
+          width: 770px;
+          height: 90vh;
+          box-shadow: 5px 5px 10px 0 gray;
+          overflow: hidden;
+          background-color: white;
+        }
+        #blog-a-image{
+          width: 770px;
+          height: 45vh;
+          position: relative;
+          background-color: darkseagreen;
+        }
+        #blog-a-image img{
+          cursor: pointer;
+        }
+        #blog-a-image-1{
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        #blog-a-image-2{
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          position: absolute;
+        }
+        #blog-a:hover #blog-a-image-2{
+          opacity: 1;
+          animation: image-slide 1s 1;
+        }
+        @keyframes image-slide {
+          
+            0%{margin-left: -50vw;}
+            100%{margin-left: 0vw;}
+        }
+        #blog-a-date{
+          width: 150px;
+          height: 5vh;
+          text-align: center;
+          margin-top: -6.5vh;
+          /* z-index: 1; */
+          position: relative;
+          padding: 10px 0px 0px 0px;
+          background-color: rgb(255,50,113);
+          color: white;
+          font-size: 20px;
+        }
+        #blog-a-bar{
+          width: 620px;
+          height: 5vh;  
+          margin-top: 3vh;
+          margin-left: 3vw;
+          font-size: 18px;
+          border-bottom: 1px solid rgb(240, 239, 239);
+        }
+        #blog-a-heading{
+          width:750px;
+          height: 5vh;
+          margin-top: 1vh;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          font-weight: bold;
+          font-size: 25px;
+        }
+        #blog-a-heading:hover{
+          color: rgb(255,50,113);
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        #blog-a-para{
+          width: 700px;
+          height: 20vh;
+          margin-top: 1vh;
+          margin-left: 3vw;
+          color: gray;
+          font-size: 19px;
+        }
+        #blog-a button{
+          width: 160px;
+          height: 7vh;
+          color: white;
+          font-size: 18px;
+          border: none;
+          transition: 0.5s;
+          margin-left: 3vw;
+          border-radius: 5px;
+          background-color: rgb(255,50,113);
+        }
+        #blog-a button:hover{
+          cursor: pointer;
+          background-color: black;
+        }
+
+        @media screen and (max-width:760px) {
+          
+
+          #blog-a {
+            width: 550px;
+            height: 90vh;
+          }
+          #blog-a-para{
+            font-size: 15px;
+            width: 500px;
+          }
+
+        }
+        @media screen and (max-width:550px) {
+          
+          #blog{
+            height: 500vh;
+          }
+          #blog-a {
+            width: 350px;
+            height: 100vh;
+          }
+          #blog-a-para{
+            font-size: 15px;
+            width: 340px;
+          }
+          #blog-a button{
+            margin-top: 50px;
+          }
+
+        }
+
+
+
+
+
+
+        #blog-text{
+          width: 380px;
+          height: 340vh;
+          margin-left: 3vw;
+          margin-top: 12vh;
+          /* background-color: darkmagenta; */
+        }
+        #blog-text-1{
+          width: 350px;
+          height: 130px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-1 input{
+          width: 280px;
+          height: 50px;
+          font-size: 15px;
+          margin-top: 40px;
+          margin-left: 35px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-1 i{
+          color: gray;
+          font-size: 20px;
+          margin-left: -40px;
+        }
+
+
+        #blog-text-2{
+          width: 350px;
+          height: 250px;
+          line-height: 40px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-2-heading{
+          font-size: 23px;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          font-weight: bold;
+        }
+        #blog-text-2 i{
+          /* margin-left: 2vw;  */
+          transform: rotate(90deg);
+        }
+        #blog-text-2-para1{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-2-para2{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-2-para3{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-2-para4{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          /* border-bottom: 1px solid rgb(235, 232, 232); */
+        }
+        #blog-text-2 a{
+          font-size: 17px;
+          color: gray;
+          transition: 0.4s;
+          margin-left: 1vw;
+          text-decoration: none;
+        }
+        #blog-text-2 a:hover{
+          color: rgb(255,50,113);
+        }
+
+        #blog-text-3{
+          width: 350px;
+          height: 500px;
+          line-height: 40px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-3-heading{
+          font-size: 23px;
+          color: rgb(66, 66, 66);
+          margin-left: 2vw;
+          font-weight: bold;
+        }
+        #blog-text-3-a{
+          width: 300px;
+          height: 100px;
+          margin-left: 2vw;
+          margin-top: 10px;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-3-b{
+          width: 300px;
+          height: 100px;
+          margin-left: 2vw;
+          margin-top: 10px;
+          /* border-bottom: 1px solid rgb(221, 220, 220); */
+        }
+        #blog-text-3-a-heading{
+          width: 210px;
+          height: 30px;
+          margin-top: 2vh;
+          font-size: 15px;
+          transition: 0.4s;
+          line-height: 20px;
+          color: rgb(66, 66, 66);
+          /* background-color: saddlebrown; */
+        }
+        #blog-text-3-a-heading:hover{
+          color: rgb(255,50,113);
+          cursor: pointer;
+        }
+        #blog-text-3-a-para{
+          width: 210px;
+          height: 30px;
+          font-size: 15px;
+          color: rgb(66, 66, 66);
+          /* background-color: saddlebrown; */
+        }
+        #blog-text-3-a-image{
+          width: 70px;
+          height: 70px;
+          margin-left: 220px;
+          margin-top: -60px;
+          /* background-color: seagreen; */
+        }
+        #blog-text-3-a-image img{
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+
+
+        #blog-text-4{
+          width: 350px;
+          height: 130px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-4-heading{
+          font-size: 23px;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          margin-top: 2vh;
+          font-weight: bold;
+        }
+        #blog-text-4 i{
+          /* margin-left: 2vw;  */
+          transform: rotate(90deg);
+        }
+        #blog-text-4 a{
+          color: gray;
+          margin-left: 1vw;
+          transition: 0.4s;
+          text-decoration: none;
+        }
+        #blog-text-4 a:hover{
+          color: rgb(255,50,113);
+        }
+        #blog-text-4-para{
+          margin-top: 2vh;
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          /* border-bottom: 1px solid rgb(221, 220, 220); */
+        }
+
+
+        #blog-text-5{
+          width: 350px;
+          height: 220px;
+          line-height: 50px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-5-heading{
+          font-size: 23px;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          margin-top: 2vh;
+          font-weight: bold;
+        }
+        #blog-text-5 span{
+          width: max-content;
+          height: max-content;
+          margin-left: 1vw;
+          background-color: rgb(240, 239, 239);
+          color: rgb(66, 66, 66);
+          padding: 10px;
+          font-size: 14px;
+          transition: 0.5s;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-5-heading-box{
+          margin-left: 2vw;
+        }
+        #blog-text-5 span:hover{
+          background-color: rgb(255,50,113);
+          color: white;
+          cursor: pointer;
+        }
+
+
+        #blog-text-6{
+          width: 350px;
+          height: 550px;
+          line-height: 50px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-5-heading{
+          font-size: 23px;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          margin-top: 2vh;
+          font-weight: bold;
+        }
+        #blog-text-6-about{
+          width: 300px;
+          height: 450px;
+          /* line-height: 50px; */
+          margin-top: 20px;
+          margin-left: 2vw;
+          background-color: rgb(240, 239, 239);
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-6-about-image{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          margin: 20px auto;
+          background-color: rosybrown;  
+        }
+        #blog-text-6-about-image img{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+        }
+        #blog-text-6-about-para{
+          width: 250px;
+          margin: auto;
+          font-size: 16px;
+          color: gray;
+          line-height: 30px;
+          text-align: center;
+        }
+        #blog-text-6-about button{
+          width: 150px;
+          height: 45px;
+          border: none;
+          color: white;
+          font-size: 17px;
+          margin-left: 70px;
+          margin-top: 20px;
+          transition: 0.5s;
+          border-radius: 30px;
+          background-color: black;
+        }
+        #blog-text-6-about button:hover{
+          border: 2px solid black;
+          background-color: transparent;
+          color: black;
+          cursor: pointer;
+        }
+
+
+        #blog-text-7{
+          width: 350px;
+          height: 250px;
+          line-height: 45px;
+          margin-top: 50px;
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-7-heading{
+          font-size: 23px;
+          margin-left: 3vw;
+          color: rgb(66, 66, 66);
+          font-weight: bold;
+        }
+        #blog-text-7 i{
+          /* margin-left: 2vw;  */
+          transform: rotate(90deg);
+        }
+        #blog-text-7-para1{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-7-para2{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-7-para3{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          border-bottom: 1px solid rgb(221, 220, 220);
+        }
+        #blog-text-7-para4{
+          width: 250px;
+          height: 40px;
+          margin-left: 2vw;
+          /* border-bottom: 1px solid rgb(235, 232, 232); */
+        }
+        #blog-text-7 a{
+          font-size: 17px;
+          color: gray;
+          transition: 0.4s;
+          margin-left: 1vw;
+          text-decoration: none;
+        }
+        #blog-text-7 a:hover{
+          color: rgb(255,50,113);
+        }
+
+        #number-list{
+          width: 350px;
+          height: 100px;
+          display: flex;
+          justify-content: space-evenly;
+          margin-left: 10vw;
+          /* background-color: blueviolet; */
+        }
+        #number-list span{
+          width: 20px;
+          height: max-content;
+          padding: 10px 5px 10px 15px;
+          color: rgb(66, 66, 66);
+          font-size: 15px;
+          transition: 0.5s;
+          border-radius: 5px;
+          background-color: rgb(240, 239, 239);
+          border: 1px solid rgb(221, 220, 220);
+        }
+        #number-list #first{
+          background-color: rgb(255,50,113);
+          color: white;
+        }
+        #number-list span:hover{
+          background-color: rgb(255,50,113);
+          color: white;
+          cursor: pointer;
+        }
+
+        @media screen and (max-width:1024px) {
+          
+
+          #blog-main {
+            width: 100vw;
+            height: 800vh;
+          }
+          #blog-text {
+          width: 400px;
+          height: 340vh;
+          margin-left: 3vw;
+          margin-top: -40vh;
+          }
+
+        }
+
+        
+
+
+          /* ----------------------------Footer----------------------------- */
+
+
+
+          #footer{
+          width: 100vw;
+          height: 30vh;
+          padding: 1px;
+          /* justify-content: space-evenly; */
+          background-color: rgb(244,249,255);
+        }
+        #footer:last-child #footer-a{
+          height: 5vh;
+        }
+        #footer-main{
+          width: 30vw;
+          height: 15vh;
+          margin: 5vh auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* background-color: darkgreen; */
+        }
+        #footer-a{
+          text-align: center;
+          width: 30vw;
+          height: 5vh;
+          display: flex;
+          justify-content: center;
+          /* background-color: violet; */
+        }
+        #footer-a img{
+          width: 15vw;
+        }
+
+
+  </style>
+
+
+
+</head>
+<body>
+
+
+
+  <div id="navbar">
+
+    <div id="navbar-icons">
+      <div id="navbar-icons-a"><i class="fab fa-facebook-f"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-twitter"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-google-plus-g"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-pinterest-p"></i></div>
+      <div id="navbar-icons-a"><i class="fas fa-globe"></i></div>
+    </div>
+
+    <div id="navbar-image"><img src="./Limerick-images/logo.png" alt=""></div>
+    <div id="nav">
+      <ul>
+        <div id="first-nav-ellement">
+            <li><a href="./Limerick.html">HOME</a></li>
+            <div id="nav-hide1">
+              <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+                <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+                <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+                <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+                <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+                <p id="hover2"> &nbsp;Header Style</p>
+                <div id="nav-hide2">
+                  <a href="./Limerick.html"><p> &nbsp;header style 01</p></a><hr>
+                  <a href="./designer home.html"><p> &nbsp;header style 02</p></a><hr>
+                  <a href="./parallax-home.html"><p> &nbsp;header style 03</p></a><hr>
+                  <a href="./portfolio-home.html"><p> &nbsp;header style 04</p></a><hr>
+                  <a href="./carousel-home.html"><p> &nbsp;header style 05</p></a><hr>
+                  <a href="./Limerick.html"><p> &nbsp;header style 06</p></a>
+              </div>
+              </div>
+        </div>
+        <div>
+          <li><a href="./about-us.html">ABOUT US</a></li>
+          <div id="nav-hide1">
+              <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+              <a href="./Error-page.html"><p> &nbsp;Error Page</p></a>
+          </div>
+      </div>
+      <div>
+        <li><a href="./porfolio-left-slidebar.html">PORTFOLIO</a></li>
+        <div id="nav-hide1">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a>
+        </div>
+    </div>
+    <div>
+      <li><a href="">ELLEMENTS</a></li>
+      <div id="nav-hide1">
+          <p id="hover2"> &nbsp;Home</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Header Style</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Header Style 01</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Header Style 02</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Header Style 03</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Header Style 04</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Header Style 05</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Portfolio</p>
+          <div id="nav-hide2">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;About</p>
+          <div id="nav-hide2">
+            <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+            <a href="./about-us.html"><p> &nbsp;Team</p></a>
+        </div>
+      </div>
+  </div>
+  <div>
+    <li><a href="">BLOG</a></li>
+    <div id="nav-hide1">
+        <a href="./blog-with-slidebar.html"><p> &nbsp;Blog with Slidebar</p></a><hr>
+        <a href="./Blog-grid-view.html"><p> &nbsp;Blog Grid View</p></a><hr>
+        <a href="./Blog-list.html"><p> &nbsp;Blog List View</p></a><hr>
+        <a href="./Blog-Mansonry.html"><p> &nbsp;Blog Mansonry</p></a><hr>
+        <a href="./Blog-single.html"><p> &nbsp;Blog Single</p></a>
+    </div>
+</div>
+  <li><a href="./Contect.html">CONTECT US</a></li>
+   </ul>
+    </div>
+
+      <div id="nav-hide-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+</div>
+
+
+<div id="home-content">
+  <div id="home-content-heading">OUR BLOG</div>
+  <div id="home-content-circle"></div>
+</div>
+
+  <div id="blog-main">
+
+
+    <div id="blog">
+      <div id="blog-a">
+        <div id="blog-a-image">
+          <img id="blog-a-image-1" src="./Blog-with-slidebar-image/news-8.jpg" alt="">
+          <img id="blog-a-image-2" src="./Blog-with-slidebar-image/news-8.jpg" alt="">
+        </div>
+        <div id="blog-a-date">August 8, 2020</div>
+        <div id="blog-a-bar">
+          <i class="fas fa-user"></i>  &nbsp;admin &nbsp;&nbsp; <i class="fas fa-tags"></i>&nbsp;
+          Our Blog &nbsp;&nbsp;<i class="fas fa-comments"></i>&nbsp; 5 Comments
+        </div>
+        <div id="blog-a-heading">At, mattis nulla sem magna….</div>
+        <div id="blog-a-para">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric “outside the box” thinking. Completely pursue scalable customer service through</div>
+        <button>SEE MORE  <i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+      <div id="blog-a">
+        <div id="blog-a-image">
+          <img id="blog-a-image-1" src="./Blog-with-slidebar-image/news-9-760x360.jpg" alt="">
+          <img id="blog-a-image-2" src="./Blog-with-slidebar-image/news-9-760x360.jpg" alt="">
+        </div>
+        <div id="blog-a-date">August 8, 2020</div>
+        <div id="blog-a-bar">
+          <i class="fas fa-user"></i>  &nbsp;admin &nbsp;&nbsp; <i class="fas fa-tags"></i>&nbsp;
+          Our Blog &nbsp;&nbsp;<i class="fas fa-comments"></i>&nbsp; 2 Comments
+        </div>
+        <div id="blog-a-heading">Quam at, mattis nulla sem magna.</div>
+        <div id="blog-a-para">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric “outside the box” thinking. Completely pursue scalable customer service through</div>
+        <button>SEE MORE  <i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+      <div id="blog-a">
+        <div id="blog-a-image">
+          <img id="blog-a-image-1" src="./Blog-with-slidebar-image/news-10.jpg" alt="">
+          <img id="blog-a-image-2" src="./Blog-with-slidebar-image/news-10.jpg" alt="">
+        </div>
+        <div id="blog-a-date">August 8, 2020</div>
+        <div id="blog-a-bar">
+          <i class="fas fa-user"></i>  &nbsp;admin &nbsp;&nbsp; <i class="fas fa-tags"></i>&nbsp;
+          Our Blog &nbsp;&nbsp;<i class="fas fa-comments"></i>&nbsp; 2 Comments
+        </div>
+        <div id="blog-a-heading" class="blog-a-heading2">Eros diam,finibus eget quam at, mattis nulla sem magna….</div>
+        <div id="blog-a-para">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric “outside the box” thinking. Completely pursue scalable customer service through</div>
+        <button>SEE MORE  <i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+      <div id="blog-a">
+        <div id="blog-a-image">
+          <img id="blog-a-image-1" src="./Blog-with-slidebar-image/news-8.jpg" alt="">
+          <img id="blog-a-image-2" src="./Blog-with-slidebar-image/news-8.jpg" alt="">
+        </div>
+        <div id="blog-a-date">August 8, 2020</div>
+        <div id="blog-a-bar">
+          <i class="fas fa-user"></i>  &nbsp;admin &nbsp;&nbsp; <i class="fas fa-tags"></i>&nbsp;
+          Our Blog &nbsp;&nbsp;<i class="fas fa-comments"></i>&nbsp; 2 Comments
+        </div>
+        <div id="blog-a-heading">At, mattis nulla sem magna….</div>
+        <div id="blog-a-para">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric “outside the box” thinking. Completely pursue scalable customer service through</div>
+        <button>SEE MORE  <i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+    </div>
+
+    <div id="blog-text">
+      <div id="blog-text-1">
+        <input type="text" name="" id="" placeholder="   Search">
+        <i class="fas fa-search"></i>
+      </div>
+      <div id="blog-text-2">
+        <div id="blog-text-2-heading">Categories</div>
+        <div id="blog-text-2-para1">
+          <i class="fas fa-sort-up"></i><a href="">Blog Grid View</a>
+        </div>
+        <div id="blog-text-2-para2">
+          <i class="fas fa-sort-up"></i><a href="">Blog List View</a>
+        </div>
+        <div id="blog-text-2-para3">
+          <i class="fas fa-sort-up"></i><a href="">Blog Masonry</a>
+        </div>
+        <div id="blog-text-2-para4">
+          <i class="fas fa-sort-up"></i><a href="">Our Blog</a>
+        </div>
+      </div>
+      <div id="blog-text-3">
+        <div id="blog-text-3-heading">Recent Post</div>
+        <div id="blog-text-3-a">
+          <div id="blog-text-3-a-heading">At, Mattis Nulla Sem Magna….</div>
+          <div id="blog-text-3-a-para"><i class="fas fa-clock"></i>&nbsp;August 8, 2020</div>
+          <div id="blog-text-3-a-image">
+            <img src="./Blog-with-slidebar-image/news-8-70x70.jpg" alt="">
+          </div>
+        </div>
+        <div id="blog-text-3-a">
+          <div id="blog-text-3-a-heading">Quam At, Mattis Nulla Sem Magna.</div>
+          <div id="blog-text-3-a-para"><i class="fas fa-clock"></i>&nbsp;August 8, 2020</div>
+          <div id="blog-text-3-a-image">
+            <img src="./Blog-with-slidebar-image/news-9-70x70.jpg" alt="">
+          </div>
+        </div>
+        <div id="blog-text-3-a">
+          <div id="blog-text-3-a-heading">Eros Diam,Finibus Eget Quam At, Mattis Nulla Sem Magna….</div>
+          <div id="blog-text-3-a-para"><i class="fas fa-clock"></i>&nbsp;August 8, 2020</div>
+          <div id="blog-text-3-a-image">
+            <img src="./Blog-with-slidebar-image/news-10-70x70.jpg" alt="">
+          </div>
+        </div>
+        <div id="blog-text-3-b">
+          <div id="blog-text-3-a-heading">At, Mattis Nulla Sem Magna….</div>
+          <div id="blog-text-3-a-para"><i class="fas fa-clock"></i>&nbsp;August 8, 2020</div>
+          <div id="blog-text-3-a-image">
+            <img src="./Blog-with-slidebar-image/news-8-70x70.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div id="blog-text-4">
+        <div id="blog-text-4-heading">Archives</div>
+        <div id="blog-text-4-para">
+          <i class="fas fa-sort-up"></i><a href="">August 2020</a>
+        </div>
+      </div>
+      <div id="blog-text-5">
+        <div id="blog-text-5-heading">Popular Tags</div>
+        <div id="blog-text-5-heading-box">
+        <span>Advertising</span>
+        <span>Best</span>
+        <span>Fashion</span>
+        <span>Inspiration</span>
+        <span>Lifestyle</span>
+        <span>Tech</span>
+        <span>Trending</span>
+      </div>
+    </div>
+      <div id="blog-text-6">
+        <div id="blog-text-4-heading">About Us</div>
+        <div id="blog-text-6-about">
+          <div id="blog-text-6-about-image"><img src="./Blog-with-slidebar-image/about-1.jpg" alt=""></div>
+          <div id="blog-text-6-about-para">
+            Breathing e Here’s some of talize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalable <br> potentialities.tailers. Objectively seize scalabler
+          </div>
+          <button>READ MORE</button>
+        </div>
+      </div>
+      <div id="blog-text-7">
+        <div id="blog-text-7-heading">Meta Tags</div>
+        <div id="blog-text-7-para1">
+          <i class="fas fa-sort-up"></i><a href="">Log in</a>
+        </div>
+        <div id="blog-text-7-para2">
+          <i class="fas fa-sort-up"></i><a href="">Entries RSS</a>
+        </div>
+        <div id="blog-text-7-para3">
+          <i class="fas fa-sort-up"></i><a href="">Comments RSS</a>
+        </div>
+        <div id="blog-text-7-para4">
+          <i class="fas fa-sort-up"></i><a href="">WordPress.org</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="number-list">
+    <span id="first">1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>...</span>
+    <span>7</span>
+    <span>>></span>
+  </div>
+
+
+
+  <div id="footer">
+    <div id="footer-main">
+    <div id="footer-a"><img src="./Limerick-images/logo.png" alt=""></div>
+    <div id="footer-a">© Copyright 2020 Limerick. All Rights Reserved</div>
+    <div id="footer-a">
+      <div id="navbar-icons">
+        <div id="navbar-icons-a"><i class="fab fa-facebook-f"></i></div>
+        <div id="navbar-icons-a"><i class="fab fa-twitter"></i></div>
+        <div id="navbar-icons-a"><i class="fab fa-google-plus-g"></i></div>
+        <div id="navbar-icons-a"><i class="fab fa-pinterest-p"></i></div>
+        <div id="navbar-icons-a"><i class="fas fa-globe"></i></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

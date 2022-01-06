@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Parallax-Home</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <style>
+         body{
+        overflow-x: hidden;
+      }
+        *{
+          padding: 0; 
+          margin: 0;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #navbar{
+          width: 100vw;
+          height: 20vh;
+          display: flex;
+          position: sticky;
+          top: 0;
+          z-index: 34;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: white;
+        }
+        #navbar-image{
+          width: 20vw;
+          height: auto;
+          /* background-color: darkgreen; */
+        }
+        #navbar-image img{
+          width: 15vw;
+        }
+        #nav{
+          width: 45vw;
+          height: 4vh;
+          /* background-color: darkmagenta; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li a{
+          border-radius: 30px;
+          font-size: 1.2vw;
+          padding: 7px;
+          text-decoration: none;
+          color: black;
+          transition: 0.5s;
+        }
+        #nav ul #first-nav-ellement li a{
+          border-radius: 30px;
+          font-weight: bold;
+          font-size: 1.2vw;
+          padding: 8px;
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav ul li a:hover{
+          color: rgb(255,50,113);
+          /* background-color: rgb(127,77,255); */
+        }
+        #nav-hide1{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: 1vh;
+          display: none;
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide1:hover{
+          display: block;
+        }
+        #nav-hide1 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide1 a{
+          color: black;
+          text-decoration: none;
+        }
+
+        #nav ul div:hover #nav-hide1{
+          display: block;
+          animation: nav-hide1-slide 0.3s;
+        }
+        @keyframes nav-hide1-slide {
+          
+            0%{
+              margin-top: 6vh;
+            }
+            100%{
+              margin-top: 1vh;
+            }
+
+        }
+        #nav-hide2{
+          width: 15vw;
+          height: max-content;
+          position: absolute;
+          font-size: 1.2vw;
+          line-height: 38px;
+          margin-top: -5vh;
+          margin-left: 5vw;
+          display: none;
+          /* opacity: 0; */
+          background-color: white;
+          border: 3px solid rgb(255,50,113);
+        }
+        #nav-hide2:hover{
+          display: block;
+        }
+        #nav-hide2 p:hover{
+          color: white;
+          background-color: rgb(255,50,113);
+        }
+
+        #nav-hide1 #hover2:hover + #nav-hide2{
+          display: block;
+          /* opacity: 1; */
+          animation: nav-hide2-slide 0.3s;
+        }
+        @keyframes nav-hide2-slide {
+          
+            0%{
+              margin-top: 0vh;
+            }
+            100%{
+              margin-top: -5vh;
+            }
+
+        }
+        
+        #navbar-icons{
+          width: 15vw;
+          height: 8vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: darkred; */
+        }
+        #navbar-icons-a{
+          width: 0.5vw;
+          height: 1vh;
+          border-radius: 50%; 
+          padding: 8px 15px 18px 10px;
+          background-color: rgb(255,50,113);
+        }
+        #navbar-icons-a i{
+          color: white;
+          font-size: 1.1vw;
+          transition: 0.3s;
+        }
+        #navbar-icons-a:hover i{
+          transform: rotate(360deg);
+        }
+        #nav-hide-icon{
+          width: 4vw;
+          height: 6vh;
+          opacity: 0;
+          margin-left: 80vw;
+          position: absolute;
+          background-color: rgb(255,50,113);
+        }
+        #nav-hide-icon i{
+          font-size: 3vw;
+          color: white;
+        }
+
+        #nav-second{
+          width: 10vw;
+          height: 30vh;
+          display: flex;
+          flex-wrap: wrap;
+          text-align: center;
+          justify-content: space-evenly;
+          flex-direction: column;
+          position: absolute;
+          background-color: brown;
+        }
+
+
+
+        /* ----------------------------------------Main------------------------ */
+
+
+
+
+        #main{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/1-1.jpg);
+        }
+        #main-text{
+          width: 700px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main-text-heading{
+          font-size: 90px;
+          color: rgb(237,79,78);
+          background-color: white;
+        }
+        #main-text-heading span{
+          color: black;
+        }
+        #main-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+            @media screen and (max-width:700px) {
+              
+
+                  #main-text{
+                    width: 400px;
+                    height: auto;
+                    margin: 40vh auto;
+                  }
+                  #main-text-heading{
+                    font-size: 50px;
+                  }
+                  #main-text-para{
+                    font-size: 30px;
+                  }
+
+
+            }
+
+
+            @media screen and (max-width:425px) {
+              
+
+              #main-text{
+                width: 300px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main-text-heading{
+                font-size: 35px;
+              }
+              #main-text-para{
+                font-size: 20px;
+              }
+
+
+        }
+
+
+
+
+        #main2{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/2-1.jpg);
+        }
+        #main2-text{
+          width: 700px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main2-text-heading{
+          font-size: 90px;
+          color: rgb(238,240,145);
+          background-color: white;
+        }
+        #main2-text-heading span{
+          color: black;
+        }
+        #main2-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+
+        @media screen and (max-width:700px) {
+              
+
+              #main2-text{
+                width: 400px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main2-text-heading{
+                font-size: 50px;
+              }
+              #main2-text-para{
+                font-size: 30px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:425px) {
+          
+
+          #main2-text{
+            width: 300px;
+            height: auto;
+            margin: 40vh auto;
+          }
+          #main2-text-heading{
+            font-size: 35px;
+          }
+          #main2-text-para{
+            font-size: 20px;
+          }
+
+
+    }
+
+
+
+
+
+        #main3{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/3-1.jpg);
+        }
+        #main3-text{
+          width: 950px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main3-text-heading{
+          font-size: 90px;
+          color: rgb(1,102,213);
+          background-color: white;
+        }
+        #main3-text-heading span{
+          color: black;
+        }
+        #main3-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+        @media screen and (max-width:1000px) {
+              
+
+              #main3-text{
+                width: 650px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main3-text-heading{
+                font-size: 60px;
+              } 
+              #main3-text-para{
+                font-size: 20px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:700px) {
+              
+
+              #main3-text{
+                width: 450px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main3-text-heading{
+                font-size: 40px;
+              }
+              #main3-text-para{
+                font-size: 20px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:425px) {
+          
+
+          #main3-text{
+            width: 300px;
+            height: auto;
+            margin: 40vh auto;
+          }
+          #main3-text-heading{
+            font-size: 25px;
+          }
+          #main3-text-para{
+            font-size: 20px;
+          }
+
+
+    }
+
+
+
+
+
+        #main4{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/4-1.jpg);
+        }
+        #main4-text{
+          width: 700px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main4-text-heading{
+          font-size: 90px;
+          color: rgb(86,219,145);
+          background-color: white;
+        }
+        #main4-text-heading span{
+          color: black;
+        }
+        #main4-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+        @media screen and (max-width:700px) {
+              
+
+              #main4-text{
+                width: 400px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main4-text-heading{
+                font-size: 50px;
+              }
+              #main4-text-para{
+                font-size: 30px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:425px) {
+          
+
+          #main4-text{
+            width: 300px;
+            height: auto;
+            margin: 40vh auto;
+          }
+          #main4-text-heading{
+            font-size: 35px;
+          }
+          #main4-text-para{
+            font-size: 20px;
+          }
+
+
+    }
+
+
+
+
+
+        #main5{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/5.jpg);
+        }
+        #main5-text{
+          width: 700px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main5-text-heading{
+          font-size: 90px;
+          color: rgb(236,94,178);
+          background-color: white;
+        }
+        #main5-text-heading span{
+          color: black;
+        }
+        #main5-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+        @media screen and (max-width:700px) {
+              
+
+              #main5-text{
+                width: 400px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main5-text-heading{
+                font-size: 50px;
+              }
+              #main5-text-para{
+                font-size: 30px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:425px) {
+          
+
+          #main5-text{
+            width: 300px;
+            height: auto;
+            margin: 40vh auto;
+          }
+          #main5-text-heading{
+            font-size: 35px;
+          }
+          #main5-text-para{
+            font-size: 20px;
+          }
+
+
+    }
+
+
+
+    
+        #main6{
+          width: 100%;
+          height: 600px;
+          padding: 1px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url(./Parallax-home-image/6.jpg);
+        }
+        #main6-text{
+          width: 1000px;
+          height: auto;
+          /* background-color: yellow; */
+          margin: 40vh auto;
+        }
+        #main6-text-heading{
+          font-size: 90px;
+          color: rgb(132,65,142);
+          background-color: white;
+        }
+        #main6-text-heading span{
+          color: black;
+        }
+        #main6-text-para{
+          margin-top: 2vh;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+
+        @media screen and (max-width:1000px) {
+              
+
+              #main6-text{
+                width: 700px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main6-text-heading{
+                font-size: 60px;
+              } 
+              #main6-text-para{
+                font-size: 20px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:700px) {
+              
+
+              #main6-text{
+                width: 450px;
+                height: auto;
+                margin: 40vh auto;
+              }
+              #main6-text-heading{
+                font-size: 40px;
+              }
+              #main6-text-para{
+                font-size: 20px;
+              }
+
+
+        }
+
+
+        @media screen and (max-width:425px) {
+          
+
+          #main6-text{
+            width: 300px;
+            height: auto;
+            margin: 40vh auto;
+          }
+          #main6-text-heading{
+            font-size: 25px;
+          }
+          #main6-text-para{
+            font-size: 20px;
+          }
+
+
+    }
+
+
+
+
+
+
+        /* -----------------------------Footer--------------------------- */
+
+
+
+
+
+        #footer{
+          width: 100vw;
+          height: 30vh;
+          /* justify-content: space-evenly; */
+          background-color: white;
+        }
+        #footer:last-child #footer-a{
+          height: 5vh;
+        }
+        #footer-main{
+          width: 30vw;
+          height: 15vh;
+          margin: 5vh auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* background-color: darkgreen; */
+        }
+        #footer-a{
+          text-align: center;
+          width: 30vw;
+          height: 5vh;
+          display: flex;
+          justify-content: center;
+          /* background-color: violet; */
+        }
+        #footer-a img{
+          width: 15vw;
+        }
+
+
+
+
+      </style>
+
+
+</head>
+<body>
+  <script>
+    AOS.init();
+  </script>
+
+
+
+
+  <div id="navbar">
+    <div id="navbar-image"><img src="./Limerick-images/logo.png" alt=""></div>
+    <div id="nav">
+      <ul>
+        <div id="first-nav-ellement">
+            <li><a href="./Limerick.html">HOME</a></li>
+            <div id="nav-hide1">
+              <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+                <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+                <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+                <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+                <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+                <p id="hover2"> &nbsp;Header Style</p>
+                <div id="nav-hide2">
+                  <a href="./Limerick.html"><p> &nbsp;header style 01</p></a><hr>
+                  <a href="./designer home.html"><p> &nbsp;header style 02</p></a><hr>
+                  <a href="./parallax-home.html"><p> &nbsp;header style 03</p></a><hr>
+                  <a href="./portfolio-home.html"><p> &nbsp;header style 04</p></a><hr>
+                  <a href="./carousel-home.html"><p> &nbsp;header style 05</p></a><hr>
+                  <a href="./Limerick.html"><p> &nbsp;header style 06</p></a>
+              </div>
+              </div>
+        </div>
+        <div>
+          <li><a href="./about-us.html">ABOUT US</a></li>
+          <div id="nav-hide1">
+              <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+              <a href="./Error-page.html"><p> &nbsp;Error Page</p></a>
+          </div>
+      </div>
+      <div>
+        <li><a href="./porfolio-left-slidebar.html">PORTFOLIO</a></li>
+        <div id="nav-hide1">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a>
+        </div>
+    </div>
+    <div>
+      <li><a href="">ELLEMENTS</a></li>
+      <div id="nav-hide1">
+          <p id="hover2"> &nbsp;Home</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Creative Home</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Designer Home</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Portfollo Home</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Parallax Home</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Carousel Home</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Header Style</p>
+          <div id="nav-hide2">
+            <a href="./Limerick.html"><p> &nbsp;Header Style 01</p></a><hr>
+            <a href="./designer home.html"><p> &nbsp;Header Style 02</p></a><hr>
+            <a href="./parallax-home.html"><p> &nbsp;Header Style 03</p></a><hr>
+            <a href="./portfolio-home.html"><p> &nbsp;Header Style 04</p></a><hr>
+            <a href="./carousel-home.html"><p> &nbsp;Header Style 05</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;Portfolio</p>
+          <div id="nav-hide2">
+            <a href="./porfolio-left-slidebar.html"><p> &nbsp;Portfolio Left Slidebar</p></a><hr>
+            <a href="./Portfolio-right-slidebar.html"><p> &nbsp;Portfolio right Slidebar</p></a><hr>
+            <a href="./Portfolio-centered.html"><p> &nbsp;Portfolio Centered</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Portfolio slide</p></a><hr>
+            <a href="./centered-side.html"><p> &nbsp;Mansonry</p></a><hr>
+        </div>
+          <hr>
+          <p id="hover2"> &nbsp;About</p>
+          <div id="nav-hide2">
+            <a href="./about-us.html"><p> &nbsp;About Us</p></a><hr>
+            <a href="./about-us.html"><p> &nbsp;Team</p></a>
+        </div>
+      </div>
+  </div>
+  <div>
+    <li><a href="">BLOG</a></li>
+    <div id="nav-hide1">
+        <a href="./blog-with-slidebar.html"><p> &nbsp;Blog with Slidebar</p></a><hr>
+        <a href="./Blog-grid-view.html"><p> &nbsp;Blog Grid View</p></a><hr>
+        <a href="./Blog-list.html"><p> &nbsp;Blog List View</p></a><hr>
+        <a href="./Blog-Mansonry.html"><p> &nbsp;Blog Mansonry</p></a><hr>
+        <a href="./Blog-single.html"><p> &nbsp;Blog Single</p></a>
+    </div>
+</div>
+  <li><a href="./Contect.html">CONTECT US</a></li>
+   </ul>
+    </div>
+
+      <div id="nav-hide-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+
+</div>
+
+
+
+
+<div id="main">
+          <div id="main-text">
+            <div id="main-text-heading" data-aos="fade-left">CREATIVE <span>DESIGN</span></div>
+            <div id="main-text-para" data-aos="fade-right">Branding Design</div>
+          </div>
+</div>
+
+<div id="main2">
+        <div id="main2-text">
+          <div id="main2-text-heading" data-aos="fade-left">MODERN <span>DESIGN</span></div>
+          <div id="main2-text-para" data-aos="fade-right">Branding Design</div>
+        </div>
+</div>
+
+<div id="main3">
+  <div id="main3-text">
+    <div id="main3-text-heading" data-aos="fade-left">BRANDING <span>COLLECTION</span></div>
+    <div id="main3-text-para" data-aos="fade-right">Branding Design</div>
+  </div>
+</div>
+
+<div id="main4">
+  <div id="main4-text">
+    <div id="main4-text-heading" data-aos="fade-left">CUP OF <span>COFFE</span></div>
+    <div id="main4-text-para" data-aos="fade-right">Branding Design</div>
+  </div>
+</div>
+
+<div id="main5">
+  <div id="main5-text">
+    <div id="main5-text-heading" data-aos="fade-left">MINIMAL <span>DESIGN</span></div>
+    <div id="main5-text-para" data-aos="fade-right">Branding Design</div>
+  </div>
+</div>
+
+<div id="main6">
+  <div id="main6-text">
+    <div id="main6-text-heading" data-aos="fade-left">RESTARUNT <span>COLLECTION</span></div>
+    <div id="main6-text-para" data-aos="fade-right">Branding Design</div>
+  </div>
+</div>
+
+
+<div id="footer">
+  <div id="footer-main">
+  <div id="footer-a"><img src="./Limerick-images/logo.png" alt=""></div>
+  <div id="footer-a">© Copyright 2020 Limerick. All Rights Reserved</div>
+  <div id="footer-a">
+    <div id="navbar-icons">
+      <div id="navbar-icons-a"><i class="fab fa-facebook-f"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-twitter"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-google-plus-g"></i></div>
+      <div id="navbar-icons-a"><i class="fab fa-pinterest-p"></i></div>
+      <div id="navbar-icons-a"><i class="fas fa-globe"></i></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+  
+</body>
+</html>
